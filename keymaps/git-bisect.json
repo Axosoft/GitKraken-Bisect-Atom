@@ -1,5 +1,5 @@
 {
   "atom-workspace": {
-    "ctrl-alt-o": "git-bisect:toggle"
+    "alt-b": "git-bisect:toggle"
   }
 }
