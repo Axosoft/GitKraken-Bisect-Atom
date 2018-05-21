@@ -1,0 +1,26 @@
+{
+  "context-menu": {
+    "atom-text-editor": [
+      {
+        "label": "Toggle git-bisect",
+        "command": "git-bisect:toggle"
+      }
+    ]
+  },
+  "menu": [
+    {
+      "label": "Packages",
+      "submenu": [
+        {
+          "label": "git-bisect",
+          "submenu": [
+            {
+              "label": "Toggle",
+              "command": "git-bisect:toggle"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
