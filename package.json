@@ -1,11 +1,11 @@
 {
   "name": "git-bisect",
-  "main": "./lib/git-bisect",
+  "main": "./lib/main",
   "version": "0.0.0",
   "description": "A short description of your package",
   "keywords": [],
   "activationCommands": {
-    "atom-workspace": "git-bisect:toggle"
+    "atom-workspace": "git-bisect:open"
   },
   "repository": "https://github.com/atom/git-bisect",
   "license": "MIT",
@@ -13,6 +13,8 @@
     "atom": ">=1.0.0 <2.0.0"
   },
   "dependencies": {
+    "moment": "^2.22.1",
+    "ramda": "^0.25.0",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-virtualized": "^9.19.0"

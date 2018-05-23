@@ -1,6 +1,6 @@
 'use babel';
 
-import GitBisectView from '../lib/git-bisect-view';
+import GitBisectView from '../lib/components/GitBisectView';
 
 describe('GitBisectView', () => {
   it('has one valid test', () => {
