@@ -19,10 +19,26 @@ describe('store', () => {
       { sha: 0 }
     ]
   };
+  const mockRepoPath = '/home/whatever/some-repo/';
+  const mockGit = {};
+
   describe(StateConstants.INIT, () => {
-    it(`can transition to ${StateConstants.COMMIT_LIST_LOADING}`, () => {
+    it(`can transition to ${StateConstants.GIT_INITIALIZED}`, () => {
       store.resetState();
       expect(store.getState().state).toBe(StateConstants.INIT);
+      store.move(StateConstants.GIT_INITIALIZED, { git: mockGit, repoPath: mockRepoPath });
+      expect(store.getState().state).toBe(StateConstants.GIT_INITIALIZED);
+      expect(store.getState().repoPath).toBe(mockRepoPath);
+      expect(store.getState().git).toBe(mockGit);
+    });
+  });
+
+  describe(StateConstants.GIT_INITIALIZED, () => {
+    it(`can transition to ${StateConstants.COMMIT_LIST_LOADING}`, () => {
+      store.resetState();
+      store.move(StateConstants.GIT_INITIALIZED, { git: mockGit, repoPath: mockRepoPath });
+
+      expect(store.getState().state).toBe(StateConstants.GIT_INITIALIZED);
       store.move(StateConstants.COMMIT_LIST_LOADING);
       expect(store.getState().state).toBe(StateConstants.COMMIT_LIST_LOADING);
     });
@@ -31,6 +47,7 @@ describe('store', () => {
   describe(StateConstants.COMMIT_LIST_LOADING, () => {
     it(`can transition to ${StateConstants.COMMIT_LIST_SHOWN}`, () => {
       store.resetState();
+      store.move(StateConstants.GIT_INITIALIZED, { git: mockGit, repoPath: mockRepoPath });
       store.move(StateConstants.COMMIT_LIST_LOADING);
 
       expect(store.getState().state).toBe(StateConstants.COMMIT_LIST_LOADING);
@@ -45,6 +62,7 @@ describe('store', () => {
   describe(StateConstants.COMMIT_LIST_SHOWN, () => {
     it(`can transition to ${StateConstants.COMMIT_1_SELECTED}`, () => {
       store.resetState();
+      store.move(StateConstants.GIT_INITIALIZED, { git: mockGit, repoPath: mockRepoPath });
       store.move(StateConstants.COMMIT_LIST_LOADING);
       store.move(StateConstants.COMMIT_LIST_SHOWN, { commitList: mocks.commitList });
 
@@ -61,6 +79,7 @@ describe('store', () => {
   describe(StateConstants.COMMIT_1_SELECTED, () => {
     it(`can transition to ${StateConstants.COMMIT_LIST_SHOWN}`, () => {
       store.resetState();
+      store.move(StateConstants.GIT_INITIALIZED, { git: mockGit, repoPath: mockRepoPath });
       store.move(StateConstants.COMMIT_LIST_LOADING);
       store.move(StateConstants.COMMIT_LIST_SHOWN, { commitList: mocks.commitList });
       store.move(StateConstants.COMMIT_1_SELECTED, { sha: 6 });
@@ -77,6 +96,7 @@ describe('store', () => {
     describe(`can transition to ${StateConstants.COMMIT_2_SELECTED}`, () => {
       it('where the selected commit is older than the stored commit', () => {
         store.resetState();
+        store.move(StateConstants.GIT_INITIALIZED, { git: mockGit, repoPath: mockRepoPath });
         store.move(StateConstants.COMMIT_LIST_LOADING);
         store.move(StateConstants.COMMIT_LIST_SHOWN, { commitList: mocks.commitList });
         store.move(StateConstants.COMMIT_1_SELECTED, { sha: 6 });
@@ -94,6 +114,7 @@ describe('store', () => {
 
       it('where the second commit is younger than the stored commit', () => {
         store.resetState();
+        store.move(StateConstants.GIT_INITIALIZED, { git: mockGit, repoPath: mockRepoPath });
         store.move(StateConstants.COMMIT_LIST_LOADING);
         store.move(StateConstants.COMMIT_LIST_SHOWN, { commitList: mocks.commitList });
         store.move(StateConstants.COMMIT_1_SELECTED, { sha: 1 });
@@ -114,6 +135,7 @@ describe('store', () => {
   describe(StateConstants.COMMIT_2_SELECTED, () => {
     beforeEach(() => {
       store.resetState();
+      store.move(StateConstants.GIT_INITIALIZED, { git: mockGit, repoPath: mockRepoPath });
       store.move(StateConstants.COMMIT_LIST_LOADING);
       store.move(StateConstants.COMMIT_LIST_SHOWN, { commitList: mocks.commitList });
       store.move(StateConstants.COMMIT_1_SELECTED, { sha: 1 });
@@ -169,6 +191,7 @@ describe('store', () => {
   describe(StateConstants.BISECT_CHECKOUT_TRIGGERED, () => {
     beforeEach(() => {
       store.resetState();
+      store.move(StateConstants.GIT_INITIALIZED, { git: mockGit, repoPath: mockRepoPath });
       store.move(StateConstants.COMMIT_LIST_LOADING);
       store.move(StateConstants.COMMIT_LIST_SHOWN, { commitList: mocks.commitList });
       store.move(StateConstants.COMMIT_1_SELECTED, { sha: 1 });
@@ -229,6 +252,7 @@ describe('store', () => {
   describe(StateConstants.BISECT_COMMIT_CHECKED_OUT, () => {
     beforeEach(() => {
       store.resetState();
+      store.move(StateConstants.GIT_INITIALIZED, { git: mockGit, repoPath: mockRepoPath });
       store.move(StateConstants.COMMIT_LIST_LOADING);
       store.move(StateConstants.COMMIT_LIST_SHOWN, { commitList: mocks.commitList });
       store.move(StateConstants.COMMIT_1_SELECTED, { sha: 1 });
@@ -302,6 +326,7 @@ describe('store', () => {
     describe(StateConstants.BISECT_COMPLETED, () => {
       it(`can transition to ${StateConstants.COMMIT_LIST_LOADING}`, () => {
         store.resetState();
+        store.move(StateConstants.GIT_INITIALIZED, { git: mockGit, repoPath: mockRepoPath });
         store.move(StateConstants.COMMIT_LIST_LOADING);
         store.move(StateConstants.COMMIT_LIST_SHOWN, { commitList: mocks.commitList });
         store.move(StateConstants.COMMIT_1_SELECTED, { sha: 1 });
