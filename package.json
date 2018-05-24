@@ -12,6 +12,9 @@
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
   },
+  "scripts": {
+    "lint": "eslint lib"
+  },
   "dependencies": {
     "classnames": "^2.2.5",
     "gravatar": "^1.6.0",
@@ -21,5 +24,10 @@
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-virtualized": "^9.19.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.3",
+    "eslint": "^4.19.1",
+    "eslint-plugin-react": "^7.8.2"
   }
 }
