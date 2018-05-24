@@ -8,8 +8,20 @@
   .commit-row {
     background-color: @background-color-highlight;
 
-    &.commit-row-selected {
+    &-selected {
       background-color: @background-color-selected;
+    }
+
+    &-bad {
+      background-color: @background-color-error;
+    }
+
+    &-good {
+      background-color: @background-color-success;
+    }
+
+    &-unknown {
+      background-color: @background-color-warning;
     }
   }
 }
