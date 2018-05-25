@@ -19,8 +19,9 @@ describe('store', () => {
       { sha: 0 }
     ]
   };
-  const mockRepoPath = '/home/whatever/some-repo/';
   const mockGit = {};
+  const mockRepoPath = '/home/whatever/some-repo/';
+  const mockSha = 1;
 
   describe(StateConstants.INIT, () => {
     it(`can transition to ${StateConstants.GIT_INITIALIZED}`, () => {
@@ -217,6 +218,7 @@ describe('store', () => {
         begin: null,
         current: null,
         end: null,
+        found: null,
         temp: null
       });
       expect(store.getState().isGoodBySha).toEqual({});
@@ -240,12 +242,10 @@ describe('store', () => {
     it(`can transition to ${StateConstants.BISECT_COMPLETED}`, () => {
       const prevState = store.getState();
 
-      store.move(StateConstants.BISECT_COMPLETED);
+      store.move(StateConstants.BISECT_COMPLETED, { sha: mockSha });
 
-      expect(store.getState()).toEqual({
-        ...prevState,
-        state: StateConstants.BISECT_COMPLETED
-      });
+      expect(store.getState().state).toBe(StateConstants.BISECT_COMPLETED);
+      expect(store.getState().bisectShas.found).toBe(mockSha);
     });
   });
 
@@ -282,6 +282,7 @@ describe('store', () => {
         begin: null,
         current: null,
         end: null,
+        found: null,
         temp: null
       });
       expect(store.getState().isGoodBySha).toEqual({});
@@ -332,7 +333,7 @@ describe('store', () => {
         store.move(StateConstants.COMMIT_1_SELECTED, { sha: 1 });
         store.move(StateConstants.COMMIT_2_SELECTED, { sha: 4 });
         store.move(StateConstants.BISECT_CHECKOUT_TRIGGERED);
-        store.move(StateConstants.BISECT_COMPLETED);
+        store.move(StateConstants.BISECT_COMPLETED, { sha: mockSha });
 
         expect(store.getState().state).toBe(StateConstants.BISECT_COMPLETED);
         expect(store.getState().bisectShas.begin).toBe(1);
