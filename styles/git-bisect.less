@@ -5,45 +5,45 @@
 @import "ui-variables";
 
 .git-bisect {
+  .commit-row {
+    background-color: @background-color-highlight;
+
+    &-selected {
+      background-color: @background-color-selected;
+    }
+
+    &-found {
+      background-color: @background-color-error;
+      color: white;
+    }
+  }
+
+  .in-progress {
     .commit-row {
+      opacity: 0.5;
+
+      &-bad {
+        background-color: @background-color-error;
+        color: white;
+        opacity: 1;
+      }
+
+      &-good {
+        background-color: @background-color-success;
+        color: white;
+        opacity: 1;
+      }
+
+      &-unknown {
         background-color: @background-color-highlight;
+        opacity: 1;
+      }
 
-        &-selected {
-            background-color: @background-color-selected;
-        }
-
-        &-found {
-            background-color: @background-color-error;
-            color: white;
-        }
+      &-current {
+        background-color: @background-color-info;
+        color: white;
+        opacity: 1;
+      }
     }
-
-    .in-progress {
-        .commit-row {
-            opacity: 0.5;
-
-            &-bad {
-                background-color: @background-color-error;
-                color: white;
-                opacity: 1;
-            }
-
-            &-good {
-                background-color: @background-color-success;
-                color: white;
-                opacity: 1;
-            }
-
-            &-unknown {
-                background-color: @background-color-highlight;
-                opacity: 1;
-            }
-
-            &-current {
-                background-color: @background-color-info;
-                color: white;
-                opacity: 1;
-            }
-        }
-    }
+  }
 }
