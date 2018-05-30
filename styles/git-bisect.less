@@ -11,14 +11,9 @@
     &-selected {
       background-color: @background-color-selected;
     }
-
-    &-found {
-      background-color: @background-color-error;
-      color: white;
-    }
   }
 
-  .in-progress {
+  .highlight-commits {
     .commit-row {
       opacity: 0.3;
 
@@ -41,6 +36,12 @@
 
       &-current {
         background-color: @background-color-info;
+        color: white;
+        opacity: 1;
+      }
+
+      &-found {
+        background-color: @background-color-error;
         color: white;
         opacity: 1;
       }
