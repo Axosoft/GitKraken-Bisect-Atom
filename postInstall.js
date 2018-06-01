@@ -10,28 +10,28 @@ const config = {
   expectedChecksum: '',
   source: '',
   gitRsFile: '',
-  vendorDirectory: path.join(process.cwd(), 'vendor')
+  vendorDirectory: path.join(process.cwd(), 'vendor','gitrs')
 };
 
 switch(process.platform){
   case 'win32':
-    config.expectedChecksum = '77507cfc97cf52437422d061097aec9ec33a06c26431df4f4b2286cf413da9f4';
+    config.expectedChecksum = 'c376e6cfb542a268534b772d640baa747871c5c4ac570428147cf2bca7e2ee47';
     config.source = url.parse(
-      'https://github.com/stevek-axo/git-rs/releases/download/0.1.0/x86_64-pc-windows-msvc.tar.gz'
+      'https://github.com/Axosoft/git-rs/releases/download/0.1.0/x86_64-pc-windows-msvc.tar.gz'
     );
     config.gitRsFile = 'x86_64-pc-windows-msvc.tar.gz';
     break;
   case 'linux':
-    config.expectedChecksum = '21e3ca9ff5bd10fb91c6e2c59df3657921afbc5095b350161b015169e08d731b';
+    config.expectedChecksum = 'b044816ef6fa6a1ce64737eddd011129926a9139e9e3a5a27c844b37300e9730';
     config.source = url.parse(
-      'https://github.com/stevek-axo/git-rs/releases/download/0.1.0/x86_64-unknown-linux-gnu.tar.gz'
+      'https://github.com/Axosoft/git-rs/releases/download/0.1.0/x86_64-unknown-linux-gnu.tar.gz'
     );
     config.gitRsFile = 'x86_64-unknown-linux-gnu.tar.gz';
     break;
   case 'darwin':
-    config.expectedChecksum = 'c9036e36e23df3065b6842f17419d9417454f33fe6c87871141746284b1a7a85';
+    config.expectedChecksum = '104c1b4ebf8205361ee1af34830117ecc5c20bf98c66533dbe67bd1f51eacd85';
     config.source = url.parse(
-      'https://github.com/stevek-axo/git-rs/releases/download/0.1.0/x86_64-apple-darwin.tar.gz'
+      'https://github.com/Axosoft/git-rs/releases/download/0.1.0/x86_64-apple-darwin.tar.gz'
     );
     config.gitRsFile = 'x86_64-apple-darwin.tar.gz';
     break;
