@@ -1,13 +1,14 @@
 {
-  "name": "git-bisect",
+  "name": "gitkraken-bisect",
   "main": "./lib/main",
   "version": "0.0.0",
-  "description": "A short description of your package",
-  "keywords": [],
+  "author": "Axosoft, LLC",
+  "description": "Perform a git bisect on the currently open project.",
+  "keywords": ["git", "bisect", "log", "gitkraken"],
   "activationCommands": {
     "atom-workspace": "git-bisect:open"
   },
-  "repository": "https://github.com/atom/git-bisect",
+  "repository": "https://github.com/Axosoft/git-bisect-atom",
   "license": "MIT",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"

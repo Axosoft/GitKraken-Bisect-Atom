@@ -2,7 +2,7 @@
   "context-menu": {
     "atom-text-editor": [
       {
-        "label": "Open git-bisect",
+        "label": "Open Git Bisect",
         "command": "git-bisect:open"
       }
     ]
@@ -12,7 +12,7 @@
       "label": "Packages",
       "submenu": [
         {
-          "label": "git-bisect",
+          "label": "Git Bisect",
           "submenu": [
             {
               "label": "Open",
