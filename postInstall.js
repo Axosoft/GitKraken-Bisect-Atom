@@ -20,7 +20,7 @@ switch(process.platform){
         config.source = url.parse(
             'https://github.com/stevek-axo/git-rs/releases/download/0.1.0/x86_64-pc-windows-msvc.tar.gz'
         );
-        config.gitRsFile = 'x86_64-pc-windows-msvc.tar.g';
+        config.gitRsFile = 'x86_64-pc-windows-msvc.tar.gz';
         break;
     case 'linux':
         config.expectedChecksum = '21e3ca9ff5bd10fb91c6e2c59df3657921afbc5095b350161b015169e08d731b';
@@ -30,7 +30,7 @@ switch(process.platform){
         config.gitRsFile = 'x86_64-unknown-linux-gnu.tar.gz';
         break;
     case 'darwin':
-        config.expectedChecksum = '9c5e372783d404ef49469370150c967efc3d31527f16ea08b5911f913c11b531';
+        config.expectedChecksum = 'c9036e36e23df3065b6842f17419d9417454f33fe6c87871141746284b1a7a85';
         config.source = url.parse(
             'https://github.com/stevek-axo/git-rs/releases/download/0.1.0/x86_64-apple-darwin.tar.gz'
         );
