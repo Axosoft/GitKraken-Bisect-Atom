@@ -13,7 +13,6 @@ const config = {
     vendorDirectory: path.join(process.cwd(), 'vendor')
 };
 
-//Need to change config.source from Steve's fork to main fork
 switch(process.platform){
     case 'win32':
         config.expectedChecksum = '77507cfc97cf52437422d061097aec9ec33a06c26431df4f4b2286cf413da9f4';
@@ -38,61 +37,57 @@ switch(process.platform){
         break;
 }
 
-const getFileChecksum = async (filePath) => new Promise((resolve) => {
+const getFileChecksum = (filePath) => new Promise((resolve) => {
     checksum.file(filePath, { algorithm: 'sha256' } , (_, hash) => resolve(hash));
   });
 
-const unpackFile = async (filePath, destinationPath) => tar.extract({
+const unpackFile = (filePath, destinationPath) => tar.extract({
     cwd: destinationPath,
     file: filePath
   });
 
 const setupGitRs = (config) => {
-    const options = {
-        url: config.source
-    };
-    const req = request.get(options);
-    req.pipe(fs.createWriteStream(config.gitRsFile));
+    new Promise( (resolve, reject) => {
+        const req = request.get({ url: config.source });
+        req.pipe(fs.createWriteStream(config.gitRsFile));
 
-    req.on('error', (error) => {
-        console.log('Failed to fetch gitrs');
-        process.exit(1);
-    });
+        req.on('error', (error) => {
+            reject(Error('Failed to fetch gitrs'));
+        });
 
-    req.on('response', (res) => {
-        if (res.statusCode !== 200) {
-            console.log(`Non-200 response returned from ${config.source.toString()} - (${res.statusCode})`);
-            process.exit(1);
-        }
+        req.on('response', (res) => {
+            if (res.statusCode !== 200) {
+                reject(Error('Non-200 response returned from ${config.source.toString()} - (${res.statusCode})'))
+            }
+        })
+
+        req.on('end', () => resolve());
     })
-
-    req.on('end', async () => {
-        const checksum = await getFileChecksum(config.gitRsFile, config);
+    .then(() => getFileChecksum(config.gitRsFile, config))
+    .then((checksum) => {
         if (checksum != config.expectedChecksum) {
-            console.log('Checksum validation failed');
-            process.exit(1);
+            return Promise.reject(Error('Checksum validation failed'));
         }
-
+        return Promise.resolve();
+    })
+    .then(() => {
         mkdirp(config.vendorDirectory, (error) => {
             if (error) {
-              console.log('Could not create vendor directory');
-              process.exit(1);
+                return Promise.reject(Error('Could not create vendor directory'));
             }
         });
-
-        try {
-            await unpackFile(path.join(process.cwd(), config.gitRsFile), config.vendorDirectory);
-        } catch (error) {
-            console.log('Could not extract gitrs archive');
-            process.exit(1);
-        }
-
+        return Promise.resolve();
+    })
+    .then(() => unpackFile(path.join(process.cwd(), config.gitRsFile), config.vendorDirectory))
+    .then(() => {
         fs.unlink(config.gitRsFile, (error) => {
             if (error) {
-                console.log('Could not delete gitrs tar file');
-                process.exit(1);
+                return Promise.reject(Error('Could not delete gitrs tar file'));
             }
         });
+    })
+    .catch((error) => {
+        console.log(error);
     });
 }
 
