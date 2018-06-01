@@ -1,4 +1,4 @@
-# git-bisect package
+# gitkraken-bisect package
 
 A short description of your package.
 

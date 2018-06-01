@@ -6,7 +6,7 @@ import {
 } from '../lib/constants';
 import store from '../lib/store';
 
-describe('store', () => {
+xdescribe('store', () => {
   const mocks = {
     commitList: [
       { sha: 7 },
