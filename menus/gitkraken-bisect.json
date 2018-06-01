@@ -2,8 +2,8 @@
   "context-menu": {
     "atom-text-editor": [
       {
-        "label": "Open Git Bisect",
-        "command": "git-bisect:open"
+        "label": "Open GitKraken Bisect",
+        "command": "gitkraken-bisect:open"
       }
     ]
   },
@@ -12,11 +12,11 @@
       "label": "Packages",
       "submenu": [
         {
-          "label": "Git Bisect",
+          "label": "GitKraken Bisect",
           "submenu": [
             {
               "label": "Open",
-              "command": "git-bisect:open"
+              "command": "gitkraken-bisect:open"
             }
           ]
         }
