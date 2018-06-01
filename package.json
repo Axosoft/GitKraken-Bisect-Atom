@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "classnames": "^2.2.5",
+    "debug": "^3.1.0",
     "gravatar": "^1.6.0",
     "lodash.memoize": "^4.1.2",
     "moment": "^2.22.1",
