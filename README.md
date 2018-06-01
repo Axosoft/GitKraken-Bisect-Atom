@@ -1,5 +1,9 @@
 # gitkraken-bisect package
 
-A short description of your package.
+Opens a panel in which you can perform a git bisect on your currently open project folder.
 
-![A screenshot of your package](https://f.cloud.github.com/assets/69169/2290250/c35d867a-a017-11e3-86be-cd7c5bf3ff9b.gif)
+To open the bisect panel, use the keyboard shortcut `Alt + B` or open the Command Palette and search for `GitKraken Bisect`.
+
+![A screenshot of your package](/screenshots/gk_bisect.gif)
+
+This package is an experiment by the [GitKraken](https://www.gitkraken.com/) team to test the viability of [git-rs](https://github.com/Axosoft/git-rs), a Git CLI command runner written in Rust.
