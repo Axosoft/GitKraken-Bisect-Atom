@@ -25,6 +25,7 @@
   "dependencies": {
     "checksum": "^0.1.1",
     "classnames": "^2.2.5",
+    "cross-zip": "^2.1.5",
     "debug": "^3.1.0",
     "gravatar": "^1.6.0",
     "json-length-delimited-stream": "^0.2.1",
