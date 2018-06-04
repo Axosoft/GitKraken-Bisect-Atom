@@ -41,11 +41,6 @@ const getFileChecksum = (filePath) => new Promise((resolve) => {
   checksum.file(filePath, { algorithm: 'sha256' } , (_, hash) => resolve(hash));
 });
 
-const unpackFile = (filePath, destinationPath) => zip.unzip({
-  cwd: destinationPath,
-  file: filePath,
-});
-
 const setupGitRs = (config) => {
   new Promise( (resolve, reject) => {
     const req = request.get({ url: config.source });
@@ -71,15 +66,12 @@ const setupGitRs = (config) => {
       return Promise.resolve();
     })
     .then(() => {
-      console.log('making directory')
       return new Promise((resolve, reject) => mkdirp(
         config.vendorDirectory,
         (error) => error ? reject(new Error('Could not create vendor directory')) : resolve()
       ));
     })
     .then(() => {
-      console.log(path.join(__dirname, '..', config.gitRsFile));
-      console.log(config.vendorDirectory)
       return new Promise((resolve, reject) =>
         zip.unzip(
           path.join(__dirname, '..', config.gitRsFile),
@@ -87,17 +79,15 @@ const setupGitRs = (config) => {
           error => error ? reject(new Error('Could not unzip gitRs archive')) : resolve()
         )
       );
-      console.log('File unzipped');
     })
     .then(() => {
-      console.log(path.join(__dirname, config.gitRsFile));
       return new Promise((resolve, reject) => fs.unlink(
         path.join(__dirname, '..', config.gitRsFile),
         (error) => error ? reject('Could not delete git-rs zip file') : resolve()
       ));
     })
     .catch((error) => {
-      console.log(error);
+      console.log(error); // eslint-disable-line no-console
     });
 };
 
