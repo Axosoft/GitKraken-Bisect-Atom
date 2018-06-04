@@ -3,7 +3,6 @@ const fs = require('fs');
 const mkdirp = require('mkdirp');
 const path = require('path');
 const request = require('request');
-const tar = require('tar');
 const url = require('url');
 const zip = require('cross-zip');
 
