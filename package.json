@@ -20,7 +20,7 @@
   },
   "scripts": {
     "lint": "eslint lib",
-    "postinstall": "node postInstall.js"
+    "postinstall": "node scripts/postInstall.js"
   },
   "dependencies": {
     "checksum": "^0.1.1",
