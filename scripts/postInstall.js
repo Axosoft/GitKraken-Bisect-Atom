@@ -16,23 +16,23 @@ const config = {
 
 switch(process.platform){
   case 'win32':
-    config.expectedChecksum = 'bf39b8538db936a1889efefdbd299a6a6cf93ecaf0de012aad7c1b50d53e9108';
+    config.expectedChecksum = '19e441e00b024288039c3b7cd4e25bcc92acd2b79d5e671d660a4f432a2fc2e6';
     config.source = url.parse(
-      'https://github.com/implausible/git-rs/releases/download/0.1.2/x86_64-pc-windows-msvc.zip'
+      'https://github.com/Axosoft/git-rs/releases/download/0.1.1/x86_64-pc-windows-msvc.zip'
     );
     config.gitRsFile = 'x86_64-pc-windows-msvc';
     break;
   case 'linux':
-    config.expectedChecksum = '0234e8da165f4d8a3fd91f250c61f09bd1e010a1a6a45a9f287c73b9471a4394';
+    config.expectedChecksum = 'd5156775396f05e74e45770d20785b685f981f0157e06245854f6565e4bcf3d0';
     config.source = url.parse(
-      'https://github.com/implausible/git-rs/releases/download/0.1.2/x86_64-unknown-linux-gnu.zip'
+      'https://github.com/Axosoft/git-rs/releases/download/0.1.1/x86_64-unknown-linux-gnu.zip'
     );
     config.gitRsFile = 'x86_64-unknown-linux-gnu';
     break;
   case 'darwin':
-    config.expectedChecksum = 'd4b2dc8d7e4135e7721c870a3dd751add892071e11ec5ff4f1b5b9d3d6f4ea6a';
+    config.expectedChecksum = '1dc10ebe0187ac0f733f97dbe01099fb9fedce3e967b486c114716efe2874357';
     config.source = url.parse(
-      'https://github.com/implausible/git-rs/releases/download/0.1.2/x86_64-apple-darwin.zip'
+      'https://github.com/Axosoft/git-rs/releases/download/0.1.1/x86_64-apple-darwin.zip'
     );
     config.gitRsFile = 'x86_64-apple-darwin';
     break;
