@@ -15,21 +15,21 @@ const config = {
 
 switch(process.platform){
   case 'win32':
-    config.expectedChecksum = '19e441e00b024288039c3b7cd4e25bcc92acd2b79d5e671d660a4f432a2fc2e6';
+    config.expectedChecksum = '8544d72f846e9f2c4230570963ad7ada30a127e4c4d8b3405f568ae0cbb4132c';
     config.source = url.parse(
       'https://github.com/Axosoft/git-rs/releases/download/0.1.1/x86_64-pc-windows-msvc.zip'
     );
     config.gitRsFile = 'x86_64-pc-windows-msvc';
     break;
   case 'linux':
-    config.expectedChecksum = 'd5156775396f05e74e45770d20785b685f981f0157e06245854f6565e4bcf3d0';
+    config.expectedChecksum = 'fa70f1535b7e9a622f1388378ee0bb2c10b8c7e466163cef900c251684dc571e';
     config.source = url.parse(
       'https://github.com/Axosoft/git-rs/releases/download/0.1.1/x86_64-unknown-linux-gnu.zip'
     );
     config.gitRsFile = 'x86_64-unknown-linux-gnu';
     break;
   case 'darwin':
-    config.expectedChecksum = '1dc10ebe0187ac0f733f97dbe01099fb9fedce3e967b486c114716efe2874357';
+    config.expectedChecksum = '29b5a26976928321ec5a4096d7158c9be43976cec2757fb6eb43449d46265a4f';
     config.source = url.parse(
       'https://github.com/Axosoft/git-rs/releases/download/0.1.1/x86_64-apple-darwin.zip'
     );
