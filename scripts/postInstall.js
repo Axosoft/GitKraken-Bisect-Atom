@@ -20,6 +20,8 @@ switch(process.platform){
       'https://github.com/Axosoft/git-rs/releases/download/0.1.1/x86_64-pc-windows-msvc.zip'
     );
     config.gitRsFile = 'x86_64-pc-windows-msvc';
+    // The windows version does not extract a `git-rs` folder like the other platforms do.
+    config.vendorDirectory = path.join(config.vendorDirectory, 'git-rs');
     break;
   case 'linux':
     config.expectedChecksum = 'fa70f1535b7e9a622f1388378ee0bb2c10b8c7e466163cef900c251684dc571e';
